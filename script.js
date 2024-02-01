@@ -1,10 +1,12 @@
 let button = document.querySelector('button');
+const gridContainer = document.querySelector('.gridContainer')
 let size = 16;
 const gridHeight = 600;
 const gridWidth = 600;
 let boxSize = gridHeight/size;
 
 button.addEventListener('click', ()=>{
+    clearGrid()
     generateGrid(askUserForGridSize())
 });
 
@@ -19,7 +21,7 @@ function askUserForGridSize(){
 }
 
 function generateGrid(size){
-    const gridContainer = document.querySelector('.gridContainer')
+
     //calc size for rows and columns in those rows
     
     //add rows
@@ -39,4 +41,8 @@ function generateGrid(size){
             row.appendChild(column);
         }
     }
+}
+
+function clearGrid(){
+    gridContainer.innerHTML = ''
 }
