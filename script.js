@@ -27,16 +27,16 @@ function generateGrid(size){
     //add rows
     for (let rowIndex = 0; rowIndex < size; rowIndex++){
         let row = document.createElement('div');
-        row.style.cssText = `background-color: blue; width: ${gridWidth}px; height: ${boxSize}px;`
+        row.style.cssText = `background-color: white; width: ${gridWidth}px; height: ${boxSize}px;`
         row.classList.add('row');
         gridContainer.appendChild(row);
         //add columns in rows
         for (let columnIndex = 0; columnIndex < size; columnIndex++){
             let column = document.createElement('div');
-            column.style.cssText = `background-color: blue; height: ${boxSize}px; width: ${boxSize}px;`
+            column.style.cssText = `background-color: white; height: ${boxSize}px; width: ${boxSize}px;`
             column.classList.add('box')
             column.addEventListener('mouseenter',(event)=>{
-                event.target.style.backgroundColor = 'yellow';
+                event.target.style.backgroundColor = `${getRandomRGBValue()}`;
             });
             row.appendChild(column);
         }
@@ -45,4 +45,11 @@ function generateGrid(size){
 
 function clearGrid(){
     gridContainer.innerHTML = ''
+}
+function getRandomInteger(maximum){
+    return parseInt(Math.floor(Math.random() * maximum));
+}
+
+function getRandomRGBValue(){
+    return 'rgb(' + getRandomInteger(255) + ',' + getRandomInteger(255) + ', ' + getRandomInteger(255) + ')'
 }
